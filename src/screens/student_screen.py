@@ -119,9 +119,7 @@ def student_screen():
     if "show_registration" not in st.session_state:
      st.session_state.show_registration = False
     photo_source = st.camera_input("Position your face in the center")
-    st.write("Photo source:", photo_source is not None)
-    st.write("Show registration:", st.session_state.show_registration)
-    st.write("Students:", len(get_all_students()))
+    
 
     if photo_source:
         st.session_state.photo_source = photo_source
@@ -129,8 +127,7 @@ def student_screen():
 
         with st.spinner('AI is scanning..'):
             detected, all_ids, num_faces = predict_attendance(img)
-            st.write("Faces:", num_faces)
-            st.write("Detected:", detected)
+            
 
             if num_faces == 0:
                 st.warning('Face not found!')
